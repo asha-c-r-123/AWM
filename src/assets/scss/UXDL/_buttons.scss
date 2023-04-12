@@ -1,0 +1,392 @@
+.pg-button {
+  display: inline-block;
+  position: relative;
+  margin: 0 1.25rem 1.25rem 0;
+  padding: 1.15em 1.15em;
+  line-height: 1.2em;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: 1px;
+  color: $pg-white;
+  border: 0;
+  border-radius: $btn-border-radius;
+  background-color: $pg-primary-color;
+  cursor: pointer;
+  outline: none;
+
+  transition: background-color 300ms ease-out, color 300ms ease-out, border-color 300ms ease-out;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+  @include ripple($pg-light-blue);
+
+  .pg-row & {
+    float: left;
+  }
+
+  &:hover, &:focus {
+    border-color: $pg-secondary-color;
+    background-color: $pg-secondary-color;
+    text-decoration: none;
+  }
+  &:focus {
+    box-shadow: 0 0 1px 1px $pg-primary-color;
+  }
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  &.outline {
+    padding: 1.10em 1.15em;
+    color: $pg-primary-color;
+    background-color: $pg-white;
+    border: 2px solid $pg-primary-color;
+
+    @include ripple($pg-secondary-color);
+
+    &:hover, &:focus {
+      color: $pg-secondary-color;
+      border-color: $pg-secondary-color;
+    }
+  }
+  &.text {
+    color: $pg-primary-color;
+    background-color: $pg-white;
+    border: none;
+
+    @include ripple($pg-secondary-color);
+
+    &:hover, &:focus {
+      color: $pg-secondary-color;
+    }
+  }
+  &.icon {
+    text-align: center;
+    padding-right: 3em;
+    [class^="icon-"], [class*=" icon-"] {
+      position: absolute;
+      top: 0;
+      right: 0.5em;
+      font-size: 1.5em;
+      font-weight: inherit;
+      line-height: 2.3em;
+    }
+  }
+  &.square {
+    border-radius: $btn-border-radius-square;
+  }
+}
+
+.pg-button-group {
+  display: flex;
+  margin: 0 0 1.25rem;
+  .button-group {
+    display: inline-block;
+    position: relative;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    max-width: 13em;
+    margin: 0;
+    padding: 0.786em 0;
+    line-height: 1.2em;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    color: $pg-primary-color;
+    border: 1px solid $pg-primary-color;
+    border-radius: 0;
+    letter-spacing: 1px;
+    cursor: pointer;
+    background-color: $pg-white;
+
+    transition: background-color 300ms ease-out, color 300ms ease-out, border-color 300ms ease-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+    transform: translate3d(0, 0, 0);
+
+    @include ripple($pg-light-blue);
+
+    &:hover{
+      border-color: $pg-secondary-color;
+      color: $pg-secondary-color;
+      text-decoration: none;
+      outline: none;
+    }
+    &:focus, &:active, &.active {
+      background-color: $pg-primary-color;
+      border-color: $pg-primary-color;
+      color: $pg-white;
+      outline: none;
+    }
+    &:first-of-type {
+      border-top-left-radius: $btn-border-radius;
+      border-bottom-left-radius: $btn-border-radius;
+      border-right-width: 0;
+    }
+    &:last-of-type {
+      border-top-right-radius: $btn-border-radius;
+      border-bottom-right-radius: $btn-border-radius;
+      border-left-width: 0;
+    }
+    &.square {
+      &:first-of-type {
+        border-top-left-radius: $btn-border-radius-square;
+        border-bottom-left-radius: $btn-border-radius-square;
+      }
+      &:last-of-type {
+        border-top-right-radius: $btn-border-radius-square;
+        border-bottom-right-radius: $btn-border-radius-square;
+      }
+    }
+  }
+  .activeiOS {
+    &:hover, &:active {
+      background-color: $pg-primary-color;
+      border-color: $pg-primary-color;
+      color: $pg-white;
+      outline: none;
+    }
+  }
+}
+
+.pg-floating {
+  height: 40px;
+  position: relative;
+  z-index: 200;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+  /* positioning */
+  &.pg-floating--right,
+  &.pg-floating--left,
+  &.pg-floating--top,
+  &.pg-floating--bottom {
+    position: fixed;
+  }
+
+  &.pg-floating--right {
+    right: 20px;
+
+    .pg-floating__toggle {
+      right: 0;
+    }
+
+    .pg-floating__menu {
+      right: 0;
+      &.pg-floating__menu--active {
+        padding-right: 40px;
+      }
+    }
+  }
+
+  &.pg-floating--left {
+    left: 20px;
+
+    .pg-floating__toggle {
+      left: 0;
+    }
+
+    .pg-floating__menu {
+      left: 0;
+      &.pg-floating__menu--active {
+        padding-left: 40px;
+      }
+    }
+  }
+
+  &.pg-floating--top {
+    top: 140px;
+  }
+
+  &.pg-floating--bottom {
+    bottom: 20px;
+  }
+
+  .pg-floating__container {
+    height: 100%;
+    position: relative;
+    width: 100%;
+  }
+
+  .pg-floating__toggle {
+    background-color: $pg-primary-color;
+    border-radius: 20px;
+    cursor: pointer;
+    bottom: 0;
+    box-shadow: 0 0 3px rgba(0, 0, 0,.5);
+    color: #fff;
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    position: absolute;
+    text-align: center;
+    text-decoration: none;
+    width: 40px;
+    z-index: 200;
+
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+    @include ripple($pg-light-blue);
+
+    &:focus {
+      outline: none;
+      background-color: $pg-secondary-color;
+      box-shadow: 0 0 3px 1px $pg-primary-color;
+    }
+  }
+
+  .pg-floating__menu {
+    background-color: nth($gray,1);
+    border-radius: 20px;
+    bottom: 0;
+    box-shadow: 0 0 3px rgba(0, 0, 0, .2);
+    height: 40px;
+    list-style-type: none;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    z-index: 190;
+    max-width: 40px;
+    min-width: 40px;
+    transition: all 0.3s linear;
+
+    li {
+      display: table-cell;
+      text-align: center;
+    }
+
+    a {
+      transition: width 0.4s linear;
+      display: block;
+      height: 40px;
+      font-size: 1.4rem;
+      border-radius: 20px;
+      line-height: 40px;
+      text-decoration: none;
+      visibility: hidden;
+      width: 0;
+
+      &:focus {
+        outline: 0;
+        box-shadow: inset 0 0 0 1px $pg-secondary-color;
+        color: $pg-secondary-color;
+      }
+    }
+
+    &.pg-floating__menu--active {
+      padding: 0 10px;
+      max-width: 100vw;
+
+      a {
+        width: 40px;
+        visibility: visible;
+      }
+    }
+  }
+}
+
+.pg-switch {
+  color: $pg-black;
+  font-size: 0.875rem;
+  outline: 0;
+  margin-bottom: 1.25rem;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+  .pg-switch-input {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  .pg-switch-paddle {
+    cursor: pointer;
+    display: inline-block;
+    line-height: 1.2em;
+    padding: .4em 5em .4em 0;
+    position: relative;
+    transition: all 0.25s ease-out;
+
+    &::before {
+      background: nth($gray, 1);
+      content:'';
+      position: absolute;
+      display: inline-block;
+      width: 4em;
+      height: 2em;
+      border-radius: 1em;
+      left: 6em;
+      top: 50%;
+      margin-top:-1em;
+    }
+
+    &::after {
+      position: absolute;
+      display: inline-block;
+      width: 2rem;
+      height: 2rem;
+      transform: translate3d(0, 0, 0);
+      border-radius: 100%;
+      background: nth($gray, 3);
+      transition: all 0.25s ease-out;
+      content: '';
+      top: 50%;
+      margin-top:-1em;
+      left: 6em;
+    }
+
+    .pg-switch--active,
+    .switch-inactive {
+      width: 6em;
+    }
+
+    .pg-switch--active {
+      display: none;
+    }
+    .pg-switch--inactive {
+      width: 6em;
+      color:  nth($gray, 6);
+      display: inline-block;
+    }
+  }
+  input {
+    &:checked {
+      ~ .pg-switch-paddle {
+        &:before {
+          background: rgba(0 ,177 ,64, 0.1);
+        }
+
+        &:after {
+          left: 8em;
+          background-color: rgb(0, 177, 64);
+        }
+      }
+      + label {
+        > .pg-switch--active {
+          display: inline-block;
+        }
+        > .pg-switch--inactive {
+          display: none;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,210 @@
+html, body {
+  margin: 0;
+  font-family: $font-family;
+  font-size: $global-font-size;
+}
+
+/*Headings*/
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family;
+  line-height: 1.4;
+  margin: 0 0 .5rem;
+}
+
+h3 {
+  color: $pg-secondary-color;
+}
+
+h1 {
+  font-family: $font-family-semibold;
+}
+
+h1 {
+  color: $pg-primary-color;
+}
+
+/*Lists*/
+ul,
+ol,
+dl {
+  font-size: 1rem;
+  line-height: 1.9;
+  margin: 0 0 1em;
+  list-style-position: outside;
+  li {
+    font-size: inherit;
+  }
+}
+
+ul {
+  list-style-type: disc;
+}
+
+ul ul, ol ul, ul ol, ol ol {
+  margin-bottom: 0;
+}
+
+/*Paragraph*/
+p {
+  margin: 0 0 1em;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+/*Quotation*/
+blockquote {
+  position: relative;
+  float: left;
+  height: 100%;
+  margin: 0 .3em .3em;
+  padding: 0;
+  z-index: 0;
+  .icon-quotation {
+    position: absolute;
+    font-size: 1.7em;
+    color: $pg-primary-color;
+  }
+  p {
+    padding: .4em 0 0 1.7em;
+    margin: 0;
+    line-height: 1.2;
+    font-size: 1em;
+    font-family: $font-family-italic;
+    color: $pg-black;
+  }
+  cite {
+    display: block;
+    float: right;
+    margin: .6em 0;
+    font-size: .55em;
+    font-family: $font-family;
+    font-style: normal;
+    color: $pg-primary-color;
+  }
+  @include clearfix;
+}
+
+/*Labeled image*/
+figure {
+  margin: 0 .3rem .3rem;
+  img {
+    width: auto;
+    max-width: 100%;
+  }
+  figcaption {
+    margin-top: .3rem;
+    font-size:  .625rem;
+    color: nth($gray, 6);
+  }
+}
+
+/*Label*/
+label {
+  font-size: 1rem;
+  display: block;
+  font-weight: normal;
+  line-height: 1.8;
+}
+
+/* Button */
+button {
+  -webkit-appearance: none;
+  background: transparent;
+  text-transform: inherit;
+  -moz-appearance: none;
+  text-decoration: none;
+  line-height: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  width: inherit;
+  color: #003daf;
+  border: none;
+}
+
+/*Link*/
+a {
+  cursor: pointer;
+  color: $pg-primary-color;
+  text-decoration: none;
+  font-family: $font-family-semibold;
+  &:hover {
+    text-decoration: underline;
+  }
+  &:focus {
+    outline: auto;
+  }
+
+  &.external {
+    padding-right: 1.45em;
+    position: relative;
+
+    &:after {
+      position: absolute;
+      content: "\E929";
+      top: 50%;
+      width: 1em;
+      speak: none;
+      right: 0.1em;
+      display: block;
+      line-height: 1;
+      font-weight: 600;
+      font-style: normal;
+      font-variant: normal;
+      text-transform: none;
+      font-family: "uxdlicons";
+      transform: translate(0, -50%);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  }
+}
+
+.pg-row {
+
+  &::before, &::after {
+    content: "";
+    display: table;
+  }
+
+  &::after {
+    clear: both;
+  }
+}
+
+//mobile
+h1 {font-size: 1.5rem;} //24px
+h2 {font-size: 1.25rem;} //20px
+h3 {font-size: 1.188rem;} //19px
+h4 {font-size: 1.125rem;} //18px
+h5 {font-size: 1.063rem;} //17px
+h6 {font-size: 1rem;} //16px
+blockquote{
+  font-size:  1.125rem; //18px
+  max-width: 100%;
+}
+figure {
+  float: none;
+}
+
+//desktop
+@include uxdl-breakpoint(medium up) {
+  h1 {font-size: 3rem;} //48px
+  h2 {font-size: 2.5rem;} //40px
+  h3 {font-size: 1.938rem;} //31px
+  h4 {font-size: 1.563rem;} //25px
+  h5 {font-size: 1.25rem;} //20px
+  h6 {font-size: 1rem;} //16px
+  blockquote {
+    font-size: 1.875rem; //30px
+    max-width: 24.38rem;
+  }
+}
+
+@include uxdl-breakpoint(large up) {
+  figure {
+    width: auto;
+    text-align: right;
+    float: right;
+  }
+}

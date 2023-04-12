@@ -1,0 +1,355 @@
+/* tabs */
+.pg-tabs {
+  display: table;
+  padding: 0 1em;
+  font-family: $font-family;
+  font-size: 1.2rem;
+  line-height: 1.2em;
+  list-style-type: none;
+  border-bottom: 1px solid nth($gray, 5);
+
+  li {
+    display: table-cell;
+    text-transform: uppercase;
+    text-align: center;
+
+    &:hover {
+      button, a {
+        border-bottom: 3px solid $pg-secondary-color;
+      }
+    }
+
+    a, button {
+      display: block;
+      padding: 1.16em 0;
+      color: $pg-black;
+      text-decoration: none;
+      line-height: 1;
+      border-bottom: 3px solid transparent;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      width: 7em;
+
+      &:hover {
+        color: $pg-secondary-color;
+      }
+      &:focus {
+        outline: 1px solid $pg-secondary-color;
+      }
+      &:focus {
+        border-bottom: 3px solid $pg-secondary-color;
+      }
+    }
+
+    &.pg-tabs__tab--active {
+      button, a {
+        border-bottom: 3px solid $pg-primary-color;
+      }
+      a {
+        color: $pg-primary-color;
+        &:hover {
+          color: $pg-primary-color;
+          border-color: $pg-primary-color;
+        }
+      }
+    }
+  }
+}
+
+/* breadcrumbs */
+.pg-breadcrumbs {
+  ul {
+    margin: 0;
+    padding: 10px 0;
+    font-size: 0.875rem;
+    list-style-type: none;
+    li {
+      display: inline-block;
+      a {
+        display: inline-block;
+        color: $pg-black;
+        text-decoration: none;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+        &::after {
+          content: '>';
+          display: inline-block;
+          padding: 0 8px;
+        }
+      }
+    }
+    .pg-breadcrumbs__link--active {
+      color: $pg-primary-color;
+      a {
+        color: $pg-primary-color;
+        &::after {
+          content: '';
+        }
+      }
+    }
+  }
+}
+
+/* pagination*/
+.pg-pagination {
+  font-family: OpenSans-Semibold, sans-serif;
+
+  ul {
+    font-size: .8rem;
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+  }
+
+  li {
+    display: inline-block;
+    border-radius: 20px;
+    line-height: 40px;
+    margin: 0 1px;
+    height: 40px;
+  }
+
+  a, button {
+    display: block;
+    padding: 0 12px;
+    text-decoration: none;
+    box-sizing: border-box;
+    border-radius: 20px;
+    min-width: 40px;
+    width: auto;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+    &:hover, &:focus {
+      color: $pg-secondary-color;
+    }
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 1px $pg-secondary-color;
+    }
+  }
+
+  .pg-pagination__prev,
+  .pg-pagination__next {
+    a, button {
+      height: 38px;
+      width: 111px;
+      position: relative;
+      border: 1px solid $pg-primary-color;
+      border-radius: 20px;
+      text-align: center;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-sizing: content-box;
+
+      &:hover, &:focus {
+        border-color: $pg-secondary-color;
+        box-shadow: none;
+      }
+    }
+  }
+
+  .pg-pagination__prev a::before,
+  .pg-pagination__prev button::before,
+  .pg-pagination__next a::after,
+  .pg-pagination__next button::after {
+    font-family: uxdlicons;
+    font-size: 1.2rem;
+    text-align: center;
+    line-height: 1;
+    margin-bottom: -0.1em;
+    width: 20px;
+  }
+
+  .pg-pagination__prev {
+    a, button {
+      margin-right: 8px;
+
+      &::before {
+        content:'\e92e';
+        margin-left: -15px;
+      }
+    }
+  }
+
+  .pg-pagination__next {
+    a, button {
+      margin-left: 6px;
+
+      &::after {
+        content:'\e928';
+        margin-right: -15px;
+      }
+    }
+  }
+
+  @include uxdl-breakpoint(medium down) {
+    .pg-pagination__link {
+      display: none;
+
+      &__active {
+        display: inline-block;
+      }
+    }
+  }
+
+  .pg-pagination__link--active {
+    background-color: nth($gray,2);
+    margin: 0;
+    text-align: center;
+  }
+}
+
+/* stepper */
+.pg-stepper {
+  //general
+  * {
+    box-sizing: border-box;
+  }
+
+  ol {
+    counter-reset: li;
+    font-size: .8rem;
+    line-height: 1.4em;
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    counter-increment: li;
+    position: relative;
+
+    &::before {
+      background-color: $pg-gray;
+      border-radius: 20px;
+      color: $pg-white;
+      content:counter(li);
+      font-size: 1rem;
+      height: 40px;
+      line-height: 40px;
+      position: absolute;
+      width: 40px;
+    }
+    &::after {
+      background-color: $pg-gray;
+      content: '';
+      height: 50px;
+      left: 30px;
+      position: absolute;
+      top: 55px;
+      width: 1px;
+    }
+
+    &:last-child::after {
+      display: none;
+    }
+  }
+
+  .pg-stepper__step--visited {
+    &::before {
+      background-color: $pg-primary-color;
+    }
+
+    &::after {
+      background-color: $pg-primary-color;
+    }
+  }
+  .pg-stepper__step--active {
+
+    &::before {
+      background-color: $pg-secondary-color;
+    }
+  }
+
+  .pg-stepper__title {
+    display: block;
+    font-family: open_sansbold, sans-serif;
+  }
+
+  //mobile
+  @include uxdl-breakpoint(small only) {
+    .pg-stepper__container {
+      border-left: 1px solid $pg-gray;
+      margin-left: 30px;
+      max-height: 10px;
+      overflow: hidden;
+      padding: 10px 0 0 30px;
+    }
+
+    li {
+      min-height: 60px;
+      text-align: left;
+
+      &::before {
+        left: 10px;
+        text-align: center;
+        top: 8px;
+      }
+
+      &:last-child .pg-stepper__container {
+        border-left: none;
+      }
+    }
+
+    .pg-stepper__title {
+      padding-top: 12px;
+    }
+
+    .pg-stepper__subtitle {
+      padding-bottom: 58px;
+    }
+
+    .pg-stepper__title,
+    .pg-stepper__subtitle {
+      display: block;
+      padding-left: 60px;
+    }
+
+    .pg-stepper__step--visited {
+      .pg-stepper__container {
+        border-left-color: $pg-primary-color;
+      }
+    }
+
+    .pg-stepper__step--active {
+      .pg-stepper__container {
+        max-height: none;
+      }
+    }
+  }
+
+  //desktop
+  @include uxdl-breakpoint(medium up) {
+    // horizontal only styles
+    ol {
+      @include clearfix;
+    }
+    li {
+      display: inline-block;
+      float: left;
+      height: 110px;
+      margin: 0 10px 0 0;
+      text-align: center;
+      width: 120px;
+
+      &::before {
+        left: 40px;
+        top: 10px;
+      }
+
+      &::after {
+        background-color: $pg-gray;
+        content: '';
+        height: 1px;
+        left: 87px;
+        position: absolute;
+        top: 30px;
+        width: 74px;
+      }
+    }
+
+    .pg-stepper__title {
+      padding: 60px 0 0 0;
+    }
+  }
+}

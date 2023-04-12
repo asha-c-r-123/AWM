@@ -1,0 +1,342 @@
+.pg-dropdown {
+  margin-bottom: 1em;
+  position: relative;
+  height: 2.625rem;
+
+  & > input {
+    display: none;
+  }
+
+  &__input {
+    height: 3em;
+    width: 100%;
+    margin: 0;
+    line-height: calc(3em - 2px);
+    font-family: inherit;
+    font-size: 0.875rem;
+    border: 1px solid nth($gray, 5);
+    border-radius: 6px;
+    outline: none;
+    text-align: left;
+    color: inherit;
+    box-shadow: none;
+    box-sizing: border-box;
+    cursor:pointer;
+    transition: box-shadow 0.5s, border 0.25s ease-in-out;
+    display:inline-block;
+    padding: 0 2.4em 0 1.2em;
+    background-color: $pg-white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &.empty {
+      color: rgba(nth($gray,5), 0.8);
+    }
+    &:not(.empty) {
+      font-weight: 600;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      right: 1.2em;
+      top: 50%;
+      margin-top: -0.2em;
+      margin-right: -0.4em;
+      border-style: solid;
+      border-width: 0.4em 0.4em 0 0.4em;
+      border-color: nth($gray, 5) transparent transparent transparent;
+      transition: transform 0.2s linear;
+    }
+  }
+
+  &__search-container {
+    background-color: nth($gray, 1);
+    flex-wrap: wrap;
+    display: flex;
+    width: 100%;
+  }
+
+  &__separator {
+    display: inline-block;
+    margin: 5px;
+  }
+
+  &.active #{&}__overlay {
+    @include uxdl-breakpoint(small only) {
+      background-color: rgba(#000, 0.6);
+      position: fixed;
+      z-index: 999999;
+      height: 100%;
+      width: 100%;
+      left: 0;
+      top: 0;
+
+      &::after {
+        position: absolute;
+        content: '\e90d';
+        font-family: uxdlicons;
+        color: $pg-white;
+        font-size: 8vw;
+        right: 5px;
+        top: 5px;
+        line-height: 1;
+        width: 1em;
+        height: 1em;
+      }
+    }
+  }
+
+  &__search {
+    box-sizing: border-box;
+    align-items: center;
+    position: relative;
+    display: flex;
+    padding: 10px;
+    flex: 1;
+
+    @include uxdl-breakpoint(medium down) {
+      flex: 1 0 100%;
+      height: 52px;
+    }
+
+    input {
+      border: 1px solid nth($gray, 5);
+      line-height: calc(2em - 2px);
+      background-color: $pg-white;
+      box-sizing: border-box;
+      padding: 0 42px 0 1em;
+      border-radius: 1em;
+      appearance: none;
+      font-size: 1em;
+      outline: none;
+      height: 2em;
+      width: 100%;
+
+      &:focus {
+        border-color: $pg-primary-color;
+      }
+    }
+
+    &::after {
+      transform: translate(50%, -50%);
+      color: $pg-primary-color;
+      font-family: "uxdlicons";
+      text-transform: none;
+      font-variant: normal;
+      font-weight: normal;
+      font-style: normal;
+      position: absolute;
+      font-size: 1.5em;
+      content: "\e933";
+      speak: none;
+      right: 33px;
+      top: 50%;
+    }
+  }
+
+  &__button {
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    user-select: none;
+    text-align: right;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0 15px;
+    color: inherit;
+    display: flex;
+    flex: 0;
+
+    @include uxdl-breakpoint(medium down) {
+      height: 28px;
+    }
+
+    &:hover, &:focus {
+      color: $pg-primary-color;
+    }
+    &:focus {
+      box-shadow: 0 0 0 1px $pg-secondary-color;
+    }
+  }
+
+  [class^="icon-"] {
+    color: $pg-primary-color;
+    vertical-align: sub;
+    margin-right: 5px;
+    font-size: 1.4em;
+  }
+
+  &.active #{&}__list {
+    @include uxdl-breakpoint(small only) {
+      transform: translate(-50%, -50%);
+      display: block;
+      margin-top: 10px;
+      position: fixed;
+      z-index: 999999;
+      height: 90%;
+      width: 90%;
+      left: 50%;
+      top: 50%;
+    }
+  }
+
+  &__list {
+    display: none;
+    box-sizing: border-box;
+    background-color: $pg-white;
+    margin-top: 1px;
+    border: 1px solid nth($gray, 5);
+    border-radius: 5px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+    & ul:focus {
+      outline: none;
+      box-shadow: 0 0 0 1px $pg-secondary-color;
+    }
+
+    @include uxdl-breakpoint(medium up) {
+      transition: height 0.3s linear;
+      position: absolute;
+      width: 100%;
+      z-index: 2;
+      height: 0;
+      top: 100%;
+      left: 0;
+    }
+
+    ul {
+      overflow: auto;
+      list-style: none;
+      padding: 0 5px 0 0;
+      margin: 0;
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      width: calc(100% - 25px);
+      height: calc(100% - 20px);
+
+      li {
+        line-height: 1.4em;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        display: block;
+        padding: 10px;
+
+        &.hide {
+          display: none;
+        }
+
+        &.selected {
+          background-color: $pg-primary-color;
+          color: $pg-white;
+
+          [class^="icon-"] {
+            color: $pg-white;
+          }
+        }
+
+        &:hover:not(.selected), &.focused {
+          background-color: nth($gray, 1);
+        }
+        &.focused.selected {
+          background-color: $pg-secondary-color;
+        }
+      }
+
+      &::-webkit-scrollbar-track {
+        border-radius: 3px;
+        background-color: #eeeeee;
+      }
+      &::-webkit-scrollbar {
+        width: 6px;
+        border-radius: 3px;
+        background-color: #eeeeee;
+      }
+      &::-webkit-scrollbar-thumb {
+        border-radius: 3px;
+        background-color: #d2d2d2;
+      }
+    }
+  }
+
+  &__multi-list {
+    ul li {
+      padding-left: 2em;
+      position: relative;
+
+      &::before {
+        content: "";
+        border: 1px solid nth($gray, 5);
+        transform: translate(0, -50%);
+        background-color: $pg-white;
+        box-sizing: border-box;
+        border-radius: 1px;
+        text-align: center;
+        position: absolute;
+        font-size: 0.45em;
+        line-height: 2em;
+        display: block;
+        height: 1.9em;
+        color: $pg-white;
+        width: 1.9em;
+        left: 1.3em;
+        margin: 0;
+        top: 50%;
+      }
+
+      &.checked::before {
+        content: '\e93c';
+        background-color: $pg-primary-color;
+        font-family: 'uxdlicons';
+        border: none;
+      }
+    }
+  }
+
+  &__list &__search-container + ul {
+    top: calc(30px + 2em);
+    height: calc(100% - 50px - 2em);
+  }
+
+  @include uxdl-breakpoint(medium down) {
+    &__multi-list &__search-container {
+      height: 80px;
+    }
+    &__multi-list &__search-container + ul {
+      top: calc(30px + 3.5em);
+      height: calc(100% - 50px - 2.5em);
+    }
+  }
+
+  &.active #{&}__input {
+    border-color: $pg-primary-color;
+    box-shadow: 0 0 2px 0 rgba($pg-primary-color, 0.5);
+
+    &::after {
+      border-color: $pg-primary-color transparent transparent transparent;
+      transform: rotate(180deg);
+    }
+  }
+  &__input:focus {
+    border-color: $pg-primary-color;
+    box-shadow: 0 0 2px 0 rgba($pg-primary-color, 0.5);
+
+    &::after {
+      border-color: $pg-primary-color transparent transparent transparent;
+    }
+  }
+  &.active #{&}__list {
+    @include uxdl-breakpoint(medium up) {
+      display: block;
+      height: 200px;
+    }
+  }
+  &.active #{&}__list.long {
+    @include uxdl-breakpoint(medium up) {
+      height: 300px;
+    }
+  }
+}

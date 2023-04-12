@@ -1,0 +1,95 @@
+.pg-slider {
+  background-color: nth($gray, 1);
+  border-radius: 0.5em;
+  margin: 1.5em 2em 3em;
+  position: relative;
+  font-size: 0.5rem;
+  max-width: 100%;
+  display: block;
+  height: 1em;
+  z-index: 1;
+
+  &.focused {
+    box-shadow: 0 0 2px 0 $pg-secondary-color;
+    background-color: nth($gray, 2);
+  }
+  &.focused #{&}__path {
+    background-color: $pg-primary-color;
+  }
+  &.focused #{&}__puddle {
+    border-color: $pg-secondary-color;
+  }
+
+    &::before {
+    content: "";
+    position: absolute;
+    left: -1.5em;
+    top: -200%;
+    height: 500%;
+    width: calc(100% + 3em);
+  }
+
+  &.with-value-indicator {
+    margin-bottom: 5em;
+  }
+
+  input {
+    display: none;
+  }
+
+  &__container {
+    overflow: hidden;
+  }
+
+  &__puddle {
+    font-size: 3em;
+    transform: translate(-50%, -50%);
+    border: 1px solid nth($gray, 8);
+    background-color: $pg-white;
+    border-radius: 0.5em;
+    position: absolute;
+    cursor: pointer;
+    display: block;
+    height: 1em;
+    width: 1em;
+    top: 50%;
+    left: 0;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__path {
+    background-color: $pg-secondary-color;
+    border-radius: 0.5em;
+    position: absolute;
+    display: block;
+    height: 100%;
+    width: 0;
+    left: 0;
+    top: 0;
+  }
+
+  &__value-indicator {
+    transform: translate(-50%, 100%);
+    white-space: nowrap;
+    position: absolute;
+    font-size: 0.85rem;
+    line-height: 1;
+    bottom: -1rem;
+    z-index: -1;
+    left: 0;
+
+    &::after {
+      content: "";
+      background-color: nth($gray, 3);
+      transform: translate(-50%);
+      position: absolute;
+      height: 0.8em;
+      width: 1px;
+      top: -100%;
+      left: 50%;
+    }
+  }
+}

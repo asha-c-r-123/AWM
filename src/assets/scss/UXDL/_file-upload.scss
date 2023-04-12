@@ -1,0 +1,111 @@
+.pg-file-upload {
+  display: inline-block;
+  margin-bottom: 1em;
+  position: relative;
+  font-size: 1rem;
+  max-width: 100%;
+
+  input {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  &__file-name {
+    display: none;
+  }
+
+  &__remove {
+    display: none;
+  }
+
+  &__container {
+    border-radius: $btn-border-radius;
+    text-decoration: none;
+    white-space: nowrap;
+    letter-spacing: 1px;
+    font-size: 0.875rem;
+    line-height: 1.2em;
+    font-weight: 600;
+    max-width: 100%;
+    cursor: pointer;
+    border: 0;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+
+  &.file-selected #{&}__container {
+    padding: 0.786em 150px 0.786em 1.5em;
+    background-color: nth($gray, 1);
+    text-align: left;
+    display: block;
+  }
+
+  &:not(.file-selected) #{&}__container {
+    background-color: $pg-primary-color;
+    padding: 0.786em 3.572em;
+    display: inline-block;
+    text-align: center;
+    color: $pg-white;
+
+    &:hover, &:focus {
+      background-color: $pg-secondary-color;
+    }
+
+  }
+
+  &.focused:not(.file-selected) #{&}__container {
+    box-shadow: 0 0 2px 1px $pg-primary-color;
+    background-color: $pg-secondary-color;
+  }
+
+  &.focused.file-selected #{&}__container {
+    box-shadow: 0 0 2px 1px $pg-secondary-color;
+  }
+
+  &.file-selected #{&}__file-name {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+  }
+
+  &.file-selected #{&}__select-text {
+    display: none;
+  }
+
+  &.file-selected #{&}__remove {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-decoration: none;
+    white-space: nowrap;
+    letter-spacing: 1px;
+    font-size: 0.875rem;
+    line-height: 1.2em;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: $btn-border-radius;
+    padding: calc(0.786em - 1px) 0;
+    width: 120px;
+    text-align: center;
+    background-color: $pg-white;
+    color: $pg-primary-color;
+    border: 1px solid $pg-primary-color;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+    &:hover, &:focus {
+      outline: none;
+      color: $pg-secondary-color;
+      border-color: $pg-secondary-color;
+    }
+
+    &::after {
+      content: "Delete";
+    }
+  }
+}

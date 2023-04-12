@@ -1,0 +1,29 @@
+//import settings
+@import "UXDL/pg-colors";
+@import "UXDL/internal-colors";
+@import "settings";
+
+//import uxdl util
+@import "uxdl-util/util";
+
+//import fonts
+@import "fonts/montserrat";
+@import "fonts/uxdlicons";
+
+//import UXDL
+@import "UXDL/mixins";
+@import "UXDL/pg-typography";
+@import "UXDL/top-bar";
+@import "UXDL/rules";
+@import "UXDL/buttons";
+@import "UXDL/cards";
+@import "UXDL/forms";
+@import "UXDL/navigation";
+@import "UXDL/modals";
+@import "UXDL/footer";
+@import "UXDL/footer-light";
+@import "UXDL/dropdown";
+@import "UXDL/file-upload";
+@import "UXDL/slider";
+@import "UXDL/date-picker";
+@import "UXDL/tooltip";

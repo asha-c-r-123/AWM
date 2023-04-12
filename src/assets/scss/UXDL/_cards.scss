@@ -1,0 +1,158 @@
+.hero-image {
+  //general
+  display: table;
+  position: relative;
+  max-width: $max-width;
+  margin: 0 auto;
+  font-family: $font-family;
+  //overflow: hidden;
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  .pg-button {
+    float: none;
+  }
+
+  &__container {
+    width: 100%;
+    img {
+      max-width: 100%;
+      height: auto;
+      width: auto;
+
+      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        width: 100%;
+      }
+    }
+  }
+
+  &__message {
+    max-width: 100%;
+    bottom: 0;
+    left: 0;
+    margin: 0 auto;
+    padding: 0 10px;
+    text-align: center;
+
+    .hero-image-card {
+      max-width: 100%;
+      margin: 20px 0;
+      padding: 20px 40px;
+      background-color: rgba($pg-secondary-color, .8);
+
+      @include uxdl-breakpoint(medium down) {
+        margin-bottom: -60px;
+      }
+
+      h2, h4 {
+        color: $pg-white;
+      }
+      h2 {
+        margin: 0;
+      }
+      h4 {
+        font-family: $font-family-light;
+        line-height: 1.5;
+        margin: 10px 0;
+      }
+    }
+  }
+
+  //mobile
+  width: 100%;
+
+  //media queries landscape orientation
+  @media screen and (orientation: landscape) {
+    height: 100vh;
+  }
+
+  &__message {
+    &::after {
+      content: '';
+      display: table;
+      float: left;
+      clear: both;
+    }
+
+    position: relative;
+    @include uxdl-breakpoint(medium down) {
+      top: -75px;
+    }
+    .hero-image-card {
+      h2 {
+        font-size: 24px;
+      }
+      h4 {
+        font-size: 21px;
+      }
+
+      @include uxdl-breakpoint(small only) {
+        padding: 15px 25px 25px;
+        .pg-button {
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  //desktop
+  @include uxdl-breakpoint(large up) {
+    height: 100%;
+    width: 100%;
+    &__message{
+      position: absolute;
+      .hero-image-card {
+        h2 {
+          font-size: 30px;
+        }
+        h4 {
+          font-size: 24px;
+        }
+      }
+    }
+  }
+}
+
+.pg-card {
+  //general
+  position: relative;
+  max-width: 290px;
+  margin: 0 auto 1em;
+  padding: 1em;
+  border: 1px solid nth($gray, 3);
+  border-radius: 6px;
+  overflow: hidden;
+
+  h5 {
+    text-align: left;
+    color: $pg-primary-color;
+  }
+  p {
+    font-size:  0.875rem;
+    line-height: 1.5em;
+  }
+  .pg-button {
+    display: table;
+    padding: 0.786em 2.572em;
+    margin: 2em auto 1em;
+    background-color: $pg-primary-color;
+    border-color: $pg-primary-color;
+  }
+  .text {
+    padding: 1em 0 0;
+  }
+  &.image {
+    img {
+      position: relative;
+      width: 100%;
+    }
+  }
+  &.video {
+    video {
+      position: relative;
+      width: 100%;
+    }
+  }
+}

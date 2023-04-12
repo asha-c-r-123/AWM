@@ -1,0 +1,29 @@
+//relative path to 'UXDL' folder from your css file location or true path to it, from your domain.
+$path-to-uxdl: ".." !default;
+
+//breakpoints
+$uxdl-breakpoints: (
+        small: 0,
+        medium: 640px,
+        large: 1024px,
+) !default;
+
+$uxdl-active-breakpoint: small, medium, large !default;
+
+//global
+$max-width: 1200px !default;
+
+//typography
+$global-font-size: 100% !default;
+
+$font-family: "Montserrat-Regular", sans-serif !default;
+$font-family-italic: "Montserrat-SemiboldItalic", sans-serif !default;
+$font-family-bold: "Montserrat-Bold", sans-serif !default;
+$font-family-semibold: "Montserrat-Semibold", sans-serif !default;
+$font-family-light: "Montserrat-Light", sans-serif !default;
+
+
+//buttons
+$btn-border-radius: 40px  !default;
+$btn-border-radius-square: 0px  !default;
+$btn-switch-inactive-color: rgba(0, 61, 175, 0.2);

@@ -1,0 +1,138 @@
+@import "../../style.scss";
+.sidebar {
+  background: $white-color;
+  text-align: center;
+  display: block;
+  position: relative;
+  margin-left: -10px;
+  margin-right: -8px;
+  .active {
+    background: rgba(1, 104, 191, 0.05);
+    border-radius: 10px 0px 0px 10px;
+    position: relative;
+    color: #003da5;
+    font-weight: 700;
+    img {
+      filter: invert(10%) sepia(100%) saturate(1200%) hue-rotate(190deg)
+        brightness(90%) contrast(90%);
+    }
+  }
+  .subactive {
+    background: rgba(1, 104, 191, 0.07);
+  }
+  .parent-link.active {
+    &::after {
+      content: "";
+      width: 15px;
+      height: 22px;
+      background-color: #0168bf;
+      border-radius: 100% 0 0 100% / 50% 0 0 50%;
+      position: absolute;
+      right: 0;
+      z-index: 10;
+    }
+  }
+}
+
+.pg-logo {
+  width: 100px;
+  height: 100px;
+}
+.nav-item {
+  margin: 10px 0;
+  display: block;
+  width: 100%;
+  ul {
+    margin: 0;
+  }
+  a {
+    padding: 10px 15px;
+    color: #acacac;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &:nth-child(6) {
+    a {
+      color: #ff0000;
+    }
+  }
+}
+.sub-active {
+  background: rgba(1, 104, 191, 0.07) !important;
+  color: #003da5;
+}
+.nav-link {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  text-align: left;
+  color: green;
+  display: flex;
+  img {
+    width: 28px;
+    height: 28px;
+  }
+  span {
+    position: relative;
+    width: 100%;
+    padding: 0 15px;
+  }
+}
+.toggle-logo {
+  width: 45px;
+  height: auto;
+}
+.toggle-collapsed,
+.toggle-expanded {
+  position: absolute;
+  right: 5%;
+  z-index: 1000;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  top: 15px;
+  background: #fff;
+}
+.toggle-collapsed {
+  right: -10% !important;
+  height: auto;
+  top: 3%;
+  transform: rotate(180deg);
+}
+.nav {
+  padding-top: 50px;
+}
+.add-project {
+  border-top: 0.5px solid #acacac;
+  text-align: center;
+  width: 100%;
+  margin: 20px auto 0;
+  //   .collapse-img {
+  //     padding-left: 15px;
+  //   }
+  .nav-item {
+    padding: 15px 0 0;
+  }
+  .logout {
+    color: #ff0000;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .button-layout {
+    img {
+      margin: 0 -10px 0 0;
+    }
+  }
+}
+.logo-title {
+  font-size: 12px;
+  padding: 10px 0 0;
+  font-weight: 500;
+  color: #595959;
+  line-height: 1;
+}
+.logo{
+padding-top: 20px;
+}
